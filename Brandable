@@ -1,0 +1,26 @@
+import React from "react"; import { Card, CardContent } from "@/components/ui/card"; import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+
+const data = [ { name: "Panna Gems", score: 98.0, sector: "Gems" }, { name: "Jhansi Logistics", score: 74.7, sector: "Logistics" }, { name: "Orchha Agro Farm", score: 72.2, sector: "Agro" }, { name: "Datia Food Exports", score: 64.9, sector: "Food" }, { name: "Bundelkhand Dairy", score: 59.4, sector: "Dairy" }, { name: "Tikamgarh Tiles", score: 54.2, sector: "Construction" }, { name: "Mahoba Oil Mills", score: 50.7, sector: "Oil" }, { name: "Chanderi Weaves", score: 47.6, sector: "Textiles" }, { name: "Khajuraho Handicrafts", score: 42.6, sector: "Handicrafts" }, { name: "Lalitpur Furniture Works", score: 41.8, sector: "Furniture" } ];
+
+export default function BundelkhandIndexApp() { return ( <div className="p-6 max-w-4xl mx-auto"> <h1 className="text-3xl font-bold mb-4 text-center text-blue-700"> Bundex: बुंदेलखंड बिज़नेस इंडेक्स (Top 10) </h1>
+
+<Card className="rounded-2xl shadow-lg">
+    <CardContent className="p-4">
+      <ResponsiveContainer width="100%" height={420}>
+        <BarChart layout="vertical" data={data} margin={{ top: 5, right: 30, left: 120, bottom: 5 }}>
+          <XAxis type="number" domain={[0, Math.max(...data.map(item => item.score)) + 10]} />
+          <YAxis type="category" dataKey="name" width={160} />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="score" fill="#2563EB" radius={[0, 10, 10, 0]} name="Index Score" />
+        </BarChart>
+      </ResponsiveContainer>
+    </CardContent>
+  </Card>
+
+  <p className="text-center text-sm text-gray-500 mt-4">
+    Powered by Nikita ✨
+  </p>
+</div>
+
+); }
